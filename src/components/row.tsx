@@ -1,4 +1,5 @@
 import moment from "moment";
+import { useEffect, useState } from "react";
 
 export const Row = ({
   index,
@@ -11,6 +12,20 @@ export const Row = ({
   end: string;
   name: string;
 }) => {
+  const [isCurrent, setIsCurrent] = useState<boolean>(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const startTime = formatTime(start);
+      const endTime = formatTime(end);
+      const currentTime = moment();
+
+      setIsCurrent(currentTime.isBetween(startTime, endTime));
+    }, 1000 * 60);
+
+    return () => clearInterval(interval);
+  }, [end, start]);
+
   const formatTime = (time: string) => {
     const splitTime = time.split(":");
     return moment()
@@ -19,19 +34,11 @@ export const Row = ({
       .add(splitTime[1], "minutes");
   };
 
-  const isCurrent = (start: string, end: string) => {
-    const startTime = formatTime(start);
-    const endTime = formatTime(end);
-    const currentTime = moment();
-
-    return currentTime.isBetween(startTime, endTime);
-  };
-
   return (
     <div
       key={index + name}
       className={`grid grid-cols-12 gap-6 py-1 px-4 ${
-        isCurrent(start, end) ? "bg-green-200" : "even:bg-gray-50"
+        isCurrent ? "bg-green-200" : "even:bg-gray-50"
       }`}
     >
       <div>{index + 1}</div>
