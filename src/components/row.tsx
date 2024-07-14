@@ -1,5 +1,6 @@
 import moment from "moment";
 import { useEffect, useState } from "react";
+import { formatTime } from "../utils";
 
 export const Row = ({
   index,
@@ -25,14 +26,6 @@ export const Row = ({
 
     return () => clearInterval(interval);
   }, [end, start]);
-
-  const formatTime = (time: string) => {
-    const splitTime = time.split(":");
-    return moment()
-      .startOf("day")
-      .add(splitTime[0], "hours")
-      .add(splitTime[1], "minutes");
-  };
 
   return (
     <div
