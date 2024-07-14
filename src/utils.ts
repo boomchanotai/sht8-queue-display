@@ -1,6 +1,7 @@
 import moment from "moment";
 
 export const formatTime = (time: string) => {
+  if (!time) return moment();
   const splitTime = time.split(":");
   return moment()
     .startOf("day")
