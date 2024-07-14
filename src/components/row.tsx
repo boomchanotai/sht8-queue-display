@@ -21,7 +21,7 @@ export const Row = ({
       const currentTime = moment();
 
       setIsCurrent(currentTime.isBetween(startTime, endTime));
-    }, 1000 * 60);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, [end, start]);
