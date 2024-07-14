@@ -13,7 +13,7 @@ export const Queue = () => {
       <div className="space-y-2">
         <h1 className="font-bold">Overview</h1>
         <div>
-          <div className="grid grid-cols-12 gap-6 even:bg-gray-50 py-1 px-4">
+          <div className="grid grid-cols-6 gap-6 even:bg-gray-50 py-1 px-4">
             <div>#</div>
             <div>Start</div>
             <div>End</div>
@@ -46,7 +46,7 @@ export const Queue = () => {
       <div className="space-y-2">
         <h1 className="font-bold">Sponsor</h1>
         <div>
-          <div className="grid grid-cols-12 gap-6 even:bg-gray-50 py-1 px-4">
+          <div className="grid grid-cols-6 gap-6 even:bg-gray-50 py-1 px-4">
             <div>#</div>
             <div>Start</div>
             <div>End</div>
